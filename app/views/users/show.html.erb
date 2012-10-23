@@ -1,0 +1,31 @@
+<h2>User</h2>
+
+<%= @user.email %>
+
+<% if !@user.properties.blank? %>
+<h2>Properties</h2>
+  <% for property in @user.properties %>
+    <h3>Property <%= property.id %></h3>
+    <h4>Title</h4>
+    <p><%= property.title %></p>
+    <h4>Desc</h4>
+    <p><%= property.desc %></p>
+  <% end %>
+<% else %>
+  
+<% end %> 
+
+
+<link rel="stylesheet" href="https://s3.amazonaws.com/credport-assets/assets/badge.css">
+<div id="credport-button">
+  <p>We have partnered with Credport to help you build a portable trustworthy profile. Credport increases your chance of a transaction (like a good eBay rating) and lets you bring your reputation anywhere</p>
+  <p><a href="https://www.credport.org/signup" target='_blank' id='credport-signup'>Register at Credport to get a trustworthy profile</a>
+  </p>
+  <footer><a href='https://www.credport.org' target="_blank">Powered by Credport</a></footer>
+</div>
+<script type="text/javascript" src='https://s3.amazonaws.com/credport-assets/assets/badge-b007ac42ae08a033417664ce10fd8b6e.js'></script>
+<script type="text/javascript">
+  $(function(){
+    renderCredportButton("<%= @user.email %>")
+  })
+</script>
