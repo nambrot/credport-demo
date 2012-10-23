@@ -1,12 +1,25 @@
+
+
+<% if current_user %>
+  You are currently signed in as <%= link_to current_user.email, user_path(current_user) %> <br>
+  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %> <br>
+<% else %>
+  <%= link_to "Sign Up", new_user_registration_path  %> <br>
+  <%= link_to "Sign In", new_user_session_path  %> <br>
+<% end %>
+
+
 <% if !@users.blank? %>
+<h3>All the Users</h3>
+<ul>
   <% for @user in @users %>
-    <%= link_to @user.email, user_path(@user) %>   
+  <li>
+    <%= link_to @user.email, user_path(@user) %> <br> 
+    </li>
   <% end %>
+  </ul>
 <% else %>
 
 <% end %>    
 
 
-<% if current_user %>
-  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
-<% end %>
