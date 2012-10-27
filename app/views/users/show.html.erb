@@ -15,17 +15,20 @@
   
 <% end %> 
 
-
-<link rel="stylesheet" href="https://s3.amazonaws.com/credport-assets/assets/badge.css">
 <div id="credport-button">
-  <p>We have partnered with Credport to help you build a portable trustworthy profile. Credport increases your chance of a transaction (like a good eBay rating) and lets you bring your reputation anywhere</p>
-  <p><a href="https://www.credport.org/signup" target='_blank' id='credport-signup'>Register at Credport to get a trustworthy profile</a>
-  </p>
-  <footer><a href='https://www.credport.org' target="_blank">Powered by Credport</a></footer>
 </div>
-<script type="text/javascript" src='https://s3.amazonaws.com/credport-assets/assets/badge.js'></script>
 <script type="text/javascript">
-  $(function(){
-    renderCredportButton({email: "<%= @user.email %>"})
-  })
+  window.credport = {
+    user: {
+      email: "<%= @user.email %>"
+    },
+    buttontext: "We have partnered with Credport to help you build a portable trustworthy profile. Credport increases your chance of a transaction (like a good eBay rating) and lets you bring your reputation anywhere"
+  };
+  (function() {
+      var script = document.createElement('script');
+      script.src   = 'http://localhost:5000/assets/badge.js';
+      script.async = true;
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+    })();
 </script>
