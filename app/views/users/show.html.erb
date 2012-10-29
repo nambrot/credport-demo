@@ -20,7 +20,7 @@
 <script type="text/javascript">
   window.credport = {
     user: {
-      email: "<%= @user.email %>"
+      md5_email: "<%= Digest::MD5.hexdigest @user.email %>"
     },
     buttontext: "We have partnered with Credport to help you build a portable trustworthy profile. Credport increases your chance of a transaction (like a good eBay rating) and lets you bring your reputation anywhere"
   };
